@@ -1,0 +1,62 @@
+<html>
+<head>
+</head>
+<body>
+<blockquote style="background-color:#ffddbd">
+
+<!--this tool is written by Late Lee(http://www.latelee.org) using lex.-->
+
+<span style="color:#008000">
+#&nbsp;a&nbsp;simple&nbsp;Makefile&nbsp;for&nbsp;'code2html'&nbsp;by&nbsp;Late&nbsp;Lee</span>
+<br/>
+<span style="color:#008000">
+#&nbsp;just&nbsp;comment&nbsp;_CFLAG_&nbsp;if&nbsp;you&nbsp;dont&nbsp;want&nbsp;background&nbsp;color</span>
+<br/>
+<span style="color:#008000">
+#&nbsp;and&nbsp;run&nbsp;'make'&nbsp;again</span>
+<br/>
+<span style="color:#008000">
+#&nbsp;'lex&nbsp;xx.lex'&nbsp;will&nbsp;generate&nbsp;a&nbsp;file&nbsp;named&nbsp;_lex.yy.c_.</span>
+<br/>
+<span style="color:#008000">
+#</span>
+<br/>
+<br/>
+TARGET&nbsp;=&nbsp;code2html&nbsp;config2html&nbsp;make2html<br/>
+CC&nbsp;=&nbsp;gcc<br/>
+CFLAG&nbsp;=&nbsp;-DBACKGROUND_COLOR<br/>
+LEX&nbsp;=&nbsp;lex<br/>
+RM&nbsp;=&nbsp;rm&nbsp;-f<br/>
+<br/>
+all:&nbsp;clean&nbsp;<span style="color:#ff8000; font-weight:bold">$(TARGET)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">@echo</span>&nbsp;<span style="color:#ff00ff">"Done."</span><br/>
+<br/>
+code2html:&nbsp;code2html.lex<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">@echo</span>&nbsp;<span style="color:#ff00ff">"Starting..."</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(LEX)</span>&nbsp;code2html.lex<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(CC)</span>&nbsp;<span style="color:#ff8000; font-weight:bold">$(CFLAG)</span>&nbsp;lex.yy.c&nbsp;-o&nbsp;<span style="color:#ff8000; font-weight:bold">$@</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span style="color:#ff8000; font-weight:bold">$(RM)</span>&nbsp;lex.yy.c<br/>
+<br/>
+config2html:&nbsp;config2html.lex&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(LEX)</span>&nbsp;config2html.lex<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(CC)</span>&nbsp;<span style="color:#ff8000; font-weight:bold">$(CFLAG)</span>&nbsp;lex.yy.c&nbsp;-o&nbsp;<span style="color:#ff8000; font-weight:bold">$@</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span style="color:#ff8000; font-weight:bold">$(RM)</span>&nbsp;lex.yy.c<br/>
+<br/>
+make2html:&nbsp;make2html.lex<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(LEX)</span>&nbsp;make2html.lex<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(CC)</span>&nbsp;<span style="color:#ff8000; font-weight:bold">$(CFLAG)</span>&nbsp;lex.yy.c&nbsp;-o&nbsp;<span style="color:#ff8000; font-weight:bold">$@</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span style="color:#ff8000; font-weight:bold">$(RM)</span>&nbsp;lex.yy.c<br/>
+<br/>
+<span style="color:#660066">clean:
+</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">@echo</span>&nbsp;<span style="color:#ff00ff">"Cleaning..."</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(RM)</span>&nbsp;<span style="color:#ff8000; font-weight:bold">$(TARGET)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff">@echo</span>&nbsp;<span style="color:#ff00ff">"Done."</span><br/>
+<br/>
+<span style="color:#660066">distclean:
+</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff8000; font-weight:bold">$(RM)</span>&nbsp;<span style="color:#ff8000; font-weight:bold">$(TARGET)</span>&nbsp;*.c&nbsp;*.o&nbsp;*.html&nbsp;*.txt&nbsp;*.h<br/>
+.PHONY:&nbsp;all&nbsp;clean&nbsp;distclean&nbsp;fuck&nbsp;the&nbsp;world<br/>
+</blockquote>
+</body>
+</html>

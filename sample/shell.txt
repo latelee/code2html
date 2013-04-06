@@ -1,0 +1,6 @@
+ $ gcc -c -fno-builtin main.c (可不需要-fno-builtin选项)
+ $ ld -static -e nomain main.o -o a.out
+ $ ./a.out 
+ hello world!
+ $ echo $?
+ 42

@@ -1,0 +1,42 @@
+# a simple Makefile for 'code2html' by Late Lee
+# just comment _CFLAG_ if you dont want background color
+# and run 'make' again
+# 'lex xx.lex' will generate a file named _lex.yy.c_.
+# This Makefile if just for windows, you should make sure
+# cl.exe in your $PATH and flex.exe in current directory.
+# usage: DOS> nmake -f Makefile-win32
+
+TARGET = code2html.exe config2html.exe make2html.exe
+CC = cl.exe
+CFLAG = -DBACKGROUND_COLOR /nologo
+LEX = flex.exe
+RM = del
+
+all: clean $(TARGET)
+	@$(RM) *.obj
+	@echo "Done."
+
+code2html.exe: code2html.lex
+	@echo "Starting..."
+	$(LEX) code2html.lex
+	$(CC) $(CFLAG) lex.yy.c -o $@
+	@$(RM) lex.yy.c
+
+config2html.exe: config2html.lex 
+	$(LEX) config2html.lex
+	$(CC) $(CFLAG) lex.yy.c -o $@
+	@$(RM) lex.yy.c
+
+make2html.exe: make2html.lex
+	$(LEX) make2html.lex
+	$(CC) $(CFLAG) lex.yy.c -o $@
+	@$(RM) lex.yy.c
+
+clean:
+	@echo "Cleaning..."
+	$(RM) $(TARGET)
+	@echo "Done."
+
+distclean:
+	$(RM) $(TARGET) *.c *.o *.html *.txt *.h *.obj
+.PHONY: all clean distclean fuck the world

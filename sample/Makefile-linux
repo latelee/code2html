@@ -1,0 +1,39 @@
+# a simple Makefile for 'code2html' by Late Lee
+# just comment _CFLAG_ if you dont want background color
+# and run 'make' again
+# 'lex xx.lex' will generate a file named _lex.yy.c_.
+#
+
+TARGET = code2html config2html make2html
+CC = gcc
+CFLAG = -DBACKGROUND_COLOR
+LEX = lex
+RM = rm -f
+
+all: clean $(TARGET)
+	@echo "Done."
+
+code2html: code2html.lex
+	@echo "Starting..."
+	$(LEX) code2html.lex
+	$(CC) $(CFLAG) lex.yy.c -o $@
+	@$(RM) lex.yy.c
+
+config2html: config2html.lex 
+	$(LEX) config2html.lex
+	$(CC) $(CFLAG) lex.yy.c -o $@
+	@$(RM) lex.yy.c
+
+make2html: make2html.lex
+	$(LEX) make2html.lex
+	$(CC) $(CFLAG) lex.yy.c -o $@
+	@$(RM) lex.yy.c
+
+clean:
+	@echo "Cleaning..."
+	$(RM) $(TARGET)
+	@echo "Done."
+
+distclean:
+	$(RM) $(TARGET) *.c *.o *.html *.txt *.h
+.PHONY: all clean distclean fuck the world
